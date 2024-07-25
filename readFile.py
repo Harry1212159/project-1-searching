@@ -1,4 +1,3 @@
-import GBFS as G
 def read_input(filename):
     with open(filename, 'r') as file:
         lines = file.readlines()
@@ -17,26 +16,27 @@ def read_input(filename):
     return n, m, t, f, matrix
 
 def find_positions(matrix, n, m):
-    start = None
-    goal = None
+    # positions = {'S': None, 'G': None, 'S1': None, 'G1': None, 'S2': None, 'G2': None}
+    positions = {'S': None, 'G': None}
 
     for i in range(n):
         for j in range(m):
-            if matrix[i][j] == 'S':
-                start = (i, j)
-            elif matrix[i][j] == 'G':
-                goal = (i, j)
+            if matrix[i][j] == 'S1':
+                positions['S1'] = (i, j)
+            elif matrix[i][j] == 'G1':
+                positions['G1'] = (i, j)
     
-    return start, goal
+    return positions
 
-def print_path(path):
+def print_path(algorithm_name, start_label, path):
     if not path:
-        print("No path found")
+        print(f"No path found from {start_label} using {algorithm_name}")
     else:
-        print("Path: ", end = "")
-
+        print(f"{start_label}")
+        print(f"{algorithm_name} path: ", end="")
         for node in path:
             print(node, end=" -> ")
         print("Goal")
+
 
 
