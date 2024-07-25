@@ -22,9 +22,9 @@ def find_positions(matrix, n, m):
 
     for i in range(n):
         for j in range(m):
-            if matrix[i][j] == 'S1':
+            if matrix[i][j] == 'S':
                 start = (i, j)
-            elif matrix[i][j] == 'G1':
+            elif matrix[i][j] == 'G':
                 goal = (i, j)
     
     return start, goal
@@ -39,16 +39,4 @@ def print_path(path):
             print(node, end=" -> ")
         print("Goal")
 
-filename = 'input1_level1.txt'
-n, m, t, f, matrix = read_input(filename)
-print (n,m,t,f)
-
-for i in range (0, n):
-    for j in range (0, m):
-        print (matrix[i][j], " ", end = "")
-    print("")
-start, goal = find_positions(matrix, n, m)
-
-path_GBFS = G.GBFS(matrix, start, goal)
-print_path(path_GBFS)
 
